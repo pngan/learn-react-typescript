@@ -10,6 +10,7 @@ interface Props {
 }
 
 const TodoList: React.FC<Props> = ({ todos, setTodos }: Props) => {
+
   return <div className="container">
 
     <div className="todos">
@@ -17,7 +18,7 @@ const TodoList: React.FC<Props> = ({ todos, setTodos }: Props) => {
         Active Tasks
       </span>
       {
-        todos.map((todo) => (
+        todos.filter(i => !i.isDone).map((todo) => (
           <SingleTodo
             todo={todo}
             todos={todos}
@@ -31,7 +32,7 @@ const TodoList: React.FC<Props> = ({ todos, setTodos }: Props) => {
         Completed Tasks
       </span>
       {
-        todos.map((todo) => (
+        todos.filter(i => i.isDone).map((todo) => (
           <SingleTodo
             todo={todo}
             todos={todos}
@@ -43,9 +44,6 @@ const TodoList: React.FC<Props> = ({ todos, setTodos }: Props) => {
     </div>
   </div>
     ;
-
-
-
 }
 
 export default TodoList;
